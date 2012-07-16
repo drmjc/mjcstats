@@ -1,10 +1,30 @@
-## Convenience function to quicly convert a table of LRS scores to p values with
-##  appropriate df (degrees of freedom).
-##
-## Mark Cowley, 30 June 2005
-##
+#' convert lrs to p-values
+#' 
+#' Convert likelihood ratio statistics (LRS) to p-values (P), with an
+#' appropriate df (degrees of freedom). 
+#' 
+#' @note This was developed in the context of
+#' mapping eQTL data in BXD recombinant mice
+#' 
+#' @references \url{http://dx.doi.org/10.1007/s00335-005-0187-8}
+#'
+#' @param x a numeric vector, \code{matrix} or \code{data.frame} of LRS statistics.
+#'  even a table of data with an \dQuote{lrs} column is supported.
+#' 
+#' @param df degrees of freedom
+#' 
+#' @return p-values of the same dimension as \code{x}
+#' 
+#' @author Mark Cowley, 30 June 2005
+#' @export
+#' 
+#' @examples
+#' lrs2p( 5.28*2*log(10), 2)
+#' # [1] 5.25e-06         
+#' lod2p(lrs2lod(24.3))     
+#' # [1] 5.29e-06           
 lrs2p <- function(x, df=1) {
-    if( contains("lrs", names(x)) ) {
+    if( "lrs" %in% names(x) ) {
         ## Then x is the list containing LRS and p matrices...
         ## Overwrite the p matrix
         x$p <- lrs2p(x$lrs, df=df)
