@@ -1,12 +1,23 @@
 Package: mjcstats
-Version: 0.1
-Date: 2006-04-06
-Title: General statistics library
-Author: Mark Cowley <mark.cowley@student.unsw.edu.au>
-Maintainer:  Mark Cowley <mark.cowley@student.unsw.edu.au>
-Depends: R (>= 2.2.0)
-Suggests:
-Description: statistics library for genomescans and correlation analyses.
-URL: http://www.r-project.org, http://www.littlelab.bioinformatics.unsw.edu.au
+Version: 1.0.0
+Date: 2012-07-12
+Title: MJC's general statistics library
+Author: Mark Cowley <m.cowley@garvan.org.au>
+Maintainer: Mark Cowley <m.cowley@garvan.org.au>
+Depends:
+    qvalue
+Description: MJC's general statistics library, containing code for genetic
+    linkage scans, correlation analyses, additional corrections for multiple
+    hypothesis testing.
 Type: Package
 License: GPL-2
+Collate:
+    'coeff.variation.R'
+    'gamma.distribution.R'
+    'HDF.R'
+    'inverse.kosambi.R'
+    'lrs2lod.R'
+    'lrs2p.R'
+    'rho.R'
+    'p.adjust.R'
+    'qvalue2.R'
