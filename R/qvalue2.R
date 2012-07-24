@@ -1,13 +1,18 @@
 #' qvalue2
+#' 
 #' Estimate the q-values for a given set of p-values, in a safe manner.
-#' The most frequent error that I have seen in using qvalue, is that pertaining
+#' The most frequent error that I have seen in using \code{qvalue}, is that pertaining
 #' to the \dQuote{pi_0 estimate is less than zero} which is thrown as a 
 #' result of not being able to estimate the lambda parameter. 
 #' This function first attempts to generate qvalues using the default \dQuote{smoother}
 #' method. If that fails due to pi_0 estimate, then this is repeated using the
 #' \dQuote{bootstrap} method. If the same error is still thrown, then a fallback
-#' FDR estimation method is used, which defaults to \dQuote{BH}, the Banjamini-Hochberg
+#' FDR estimation method is used, which defaults to \dQuote{BH}, the Benjamini-Hochberg
 #' FDR
+#' 
+#' In addition, when running \code{library(qvalue)} in a headless server, you often
+#' get a warning: \code{In fun(libname, pkgname) : no DISPLAY variable so Tk is not available}
+#' which is actually thrown by tcltk. qvalue2 suppresses that message. See references.
 #'
 #' @param p a vector of p-values
 #' @param lambda The value of the tuning parameter to estimate pi_0. Must be
@@ -19,7 +24,7 @@
 #'
 #' @author Mark Cowley, 2011-10-25
 #' @export
-#' @importFrom qvalue qvalue
+#' @references \url{http://stackoverflow.com/a/11554019/178297}
 #' 
 #' @examples
 #' p <- runif(100,0,1)
@@ -38,6 +43,9 @@
 #'   qvalue2(p, lambda=c(0,0.2,0.5))
 #' }
 qvalue2 <- function(p, lambda=seq(0,0.90,0.05), fallback=c("BH", "fdr", "BY")[1]) {
+	suppressPackageStartupMessages(suppressWarnings(library(tcltk)))
+	require(qvalue) || stop("required package 'qvalue' is not installed")
+	
 	MSG <- "[1] \"ERROR: The estimated pi0 <= 0. Check that you have valid p-values or use another lambda method.\""
 
 	# qvalue writes its errors using print("ERROR: ....")

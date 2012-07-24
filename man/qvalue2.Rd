@@ -1,15 +1,6 @@
 \name{qvalue2}
 \alias{qvalue2}
-\title{qvalue2
-Estimate the q-values for a given set of p-values, in a safe manner.
-The most frequent error that I have seen in using qvalue, is that pertaining
-to the \dQuote{pi_0 estimate is less than zero} which is thrown as a
-result of not being able to estimate the lambda parameter.
-This function first attempts to generate qvalues using the default \dQuote{smoother}
-method. If that fails due to pi_0 estimate, then this is repeated using the
-\dQuote{bootstrap} method. If the same error is still thrown, then a fallback
-FDR estimation method is used, which defaults to \dQuote{BH}, the Banjamini-Hochberg
-FDR}
+\title{qvalue2}
 \usage{
   qvalue2(p, lambda = seq(0, 0.9, 0.05),
     fallback = c("BH", "fdr", "BY")[1])
@@ -31,9 +22,9 @@ FDR}
   latter has \code{pi0=1.0}.
 }
 \description{
-  qvalue2 Estimate the q-values for a given set of
-  p-values, in a safe manner. The most frequent error that
-  I have seen in using qvalue, is that pertaining to the
+  Estimate the q-values for a given set of p-values, in a
+  safe manner. The most frequent error that I have seen in
+  using \code{qvalue}, is that pertaining to the
   \dQuote{pi_0 estimate is less than zero} which is thrown
   as a result of not being able to estimate the lambda
   parameter. This function first attempts to generate
@@ -42,7 +33,14 @@ FDR}
   using the \dQuote{bootstrap} method. If the same error is
   still thrown, then a fallback FDR estimation method is
   used, which defaults to \dQuote{BH}, the
-  Banjamini-Hochberg FDR
+  Benjamini-Hochberg FDR
+}
+\details{
+  In addition, when running \code{library(qvalue)} in a
+  headless server, you often get a warning: \code{In
+  fun(libname, pkgname) : no DISPLAY variable so Tk is not
+  available} which is actually thrown by tcltk. qvalue2
+  suppresses that message. See references.
 }
 \examples{
 p <- runif(100,0,1)
@@ -63,5 +61,8 @@ qvalue2(pbad)
 }
 \author{
   Mark Cowley, 2011-10-25
+}
+\references{
+  \url{http://stackoverflow.com/a/11554019/178297}
 }
 
