@@ -1,11 +1,15 @@
 Package: mjcstats
 Version: 1.0.0
-Date: 2012-07-12
+Date: 2012-07-19
 Title: MJC's general statistics library
 Author: Mark Cowley <m.cowley@garvan.org.au>
 Maintainer: Mark Cowley <m.cowley@garvan.org.au>
-Depends:
-    qvalue
+Suggests:
+    qvalue,
+    tcltk,
+    survival,
+    gridExtra,
+    ggplot2
 Description: MJC's general statistics library, containing code for genetic
     linkage scans, correlation analyses, additional corrections for multiple
     hypothesis testing.
@@ -21,3 +25,10 @@ Collate:
     'rho.R'
     'p.adjust.R'
     'qvalue2.R'
+    'corceff.R'
+    'coxph-utils.R'
+    'normrnd.R'
+    'standardise.R'
+Imports:
+    mjcbase,
+    stats
