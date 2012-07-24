@@ -7,25 +7,34 @@
 \usage{
   rgamma2(n, mean, var)
 
-  dgamma2(n, mean, var, log = FALSE)
+  dgamma2(x, mean, var, log = FALSE)
 
   pgamma2(q, mean, var, lower.tail = TRUE, log.p = TRUE)
 
   qgamma2(p, mean, var, lower.tail = TRUE, log.p = FALSE)
 }
 \arguments{
-  \item{mean}{the mean of the distribution}
+  \item{x}{vector of quantiles}
 
-  \item{var}{the variance of the distribution}
+  \item{q}{vector of quantiles}
+
+  \item{p}{vector of probabilities}
 
   \item{n}{number of observations. If \code{length(n) > 1},
   the length is taken to be the number required.}
 
-  \item{lower.tail}{logical; if TRUE (default),
-  probabilities are \eqn{P[X \le x]}, otherwise, \eqn{P[X >
-  x]}.}
+  \item{log}{logical: if \code{TRUE},
+  probabilities/densities p are returned as \code{log(p)}.}
 
-  \item{p}{vector of probabilities.}
+  \item{log.p}{as for \code{log}}
+
+  \item{lower.tail}{logical: if \code{TRUE} (default),
+  probabilities are \code{P[X <= x]}, otherwise, \code{P[X
+  > x]}.}
+
+  \item{mean}{the mean of the distribution}
+
+  \item{var}{the variance of the distribution}
 }
 \value{
   \code{dgamma2} gives the density, \code{pgamma2} gives

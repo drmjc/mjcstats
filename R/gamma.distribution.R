@@ -9,16 +9,26 @@
 #' Since \code{Var(X) = E(X) * scale}, thus \code{scale = Var(X) / E(X)}
 #' and \code{shape = E(X) / scale}.
 #'
-#' @inheritParams stats::rgamma
+#' @param x vector of quantiles
+#' @param q vector of quantiles
+#' @param p vector of probabilities
+#' @param n number of observations. If \code{length(n) > 1}, the length is
+#'  taken to be the number required.
+#' @param log logical: if \code{TRUE}, probabilities/densities p are returned
+#'   as \code{log(p)}.
+#' @param log.p as for \code{log}
+#' @param lower.tail logical: if \code{TRUE} (default), probabilities are \code{P[X <= x]},
+#'   otherwise, \code{P[X > x]}.
+#' 
 #' @param mean the mean of the distribution
 #' @param var the variance of the distribution
 #' 
-#' @return  \code{dgamma2} gives the density, \code{pgamma2} gives the distribution
-#'      function, \code{qgamma2} gives the quantile function, and \code{rgamma2}
-#'      generates random deviates.
-#' 
-#'      Invalid arguments will result in return value \code{NaN}, with a
-#'      warning.
+#' @return \code{dgamma2} gives the density, \code{pgamma2} gives the distribution
+#'  function, \code{qgamma2} gives the quantile function, and \code{rgamma2}
+#'  generates random deviates.
+#'  
+#'  Invalid arguments will result in return value \code{NaN}, with a
+#'  warning.
 #' 
 #' @author Mark Cowley, 19 July 2005
 #' @rdname GammaDist2
@@ -30,20 +40,15 @@ rgamma2 <- function(n, mean, var) {
 	rgamma(n, shape=shape, scale=scale)
 }
 
-
-#' @inheritParams stats::dgamma
-#' @inheritParams rgamma2
 #' @export
 #' @rdname GammaDist2
-dgamma2 <- function(n, mean, var, log=FALSE) {
+dgamma2 <- function(x, mean, var, log=FALSE) {
 	scale <- var/mean
 	shape <- mean/scale
 
-	dgamma(n=n, shape=shape, scale=scale, log=log)
+	dgamma(x=x, shape=shape, scale=scale, log=log)
 }
 
-#' @inheritParams stats::pgamma
-#' @inheritParams rgamma2
 #' @export
 #' @rdname GammaDist2
 pgamma2 <- function(q, mean, var, lower.tail=TRUE, log.p=TRUE) {
@@ -53,9 +58,6 @@ pgamma2 <- function(q, mean, var, lower.tail=TRUE, log.p=TRUE) {
 	pgamma(q=q, shape=shape, scale=scale, lower.tail=lower.tail, log.p=log.p)
 }
 
-
-#' @inheritParams stats::qgamma
-#' @inheritParams rgamma2
 #' @export
 #' @rdname GammaDist2
 qgamma2 <- function(p, mean, var, lower.tail = TRUE, log.p = FALSE) {
@@ -64,4 +66,3 @@ qgamma2 <- function(p, mean, var, lower.tail = TRUE, log.p = FALSE) {
 
 	qgamma(p=p, shape=shape, scale=scale, lower.tail=lower.tail, log.p=log.p)
 }
-
