@@ -43,7 +43,7 @@
 #'   qvalue2(p, lambda=c(0,0.2,0.5))
 #' }
 qvalue2 <- function(p, lambda=seq(0,0.90,0.05), fallback=c("BH", "fdr", "BY")[1]) {
-	suppressPackageStartupMessages(suppressWarnings(library(tcltk)))
+	if(capabilities("tcltk")) suppressPackageStartupMessages(suppressWarnings(library(tcltk)))
 	require(qvalue) || stop("required package 'qvalue' is not installed")
 	
 	MSG <- "[1] \"ERROR: The estimated pi0 <= 0. Check that you have valid p-values or use another lambda method.\""
@@ -122,3 +122,5 @@ qvalue2 <- function(p, lambda=seq(0,0.90,0.05), fallback=c("BH", "fdr", "BY")[1]
 	# 
 	# return( q )
 }
+# CHANGELOG
+# 2012-10-19: added capabilties() check to avoid attempting to load tcltk in case of certain failure.
