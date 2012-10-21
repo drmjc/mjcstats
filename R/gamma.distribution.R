@@ -30,6 +30,8 @@
 #'  Invalid arguments will result in return value \code{NaN}, with a
 #'  warning.
 #' 
+#' @export
+#' @importFrom stats rgamma pgamma dgamma qgamma
 #' @author Mark Cowley, 19 July 2005
 #' @rdname GammaDist2
 #' @seealso \code{\link{rgamma}}
