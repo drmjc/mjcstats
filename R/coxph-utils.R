@@ -49,6 +49,7 @@ lrt.coxph <- function(x, digits = options()$digits, ...)  {
 #' @rdname coxph-utils
 #' @aliases lrt_pvalue.coxph lrt.pvalue.coxph
 lrt_pvalue.coxph <- function(x, digits = options()$digits, ...)  {
+	.Deprecated("p.value", "mjcstats", "Check out the new S3 method p.value.coxph", "lrt_pvalue.coxph")
 	require(survival)
 	is(x, "coxph") || stop("x != coxph")
 	
@@ -73,6 +74,8 @@ lrt_pvalue.coxph <- function(x, digits = options()$digits, ...)  {
 #' @rdname coxph-utils
 #' @aliases coef_pvalue.coxph coef.pvalue.coxph
 coef_pvalue.coxph <- function(x, digits = options()$digits, ...)  {
+	.Deprecated("p.value", "mjcstats", "Check out the new S3 method p.value.coxph", "lrt_pvalue.coxph")
+	
 	require(survival)
 	is(x, "coxph") || stop("x != coxph")
 	
