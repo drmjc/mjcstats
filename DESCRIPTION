@@ -1,6 +1,6 @@
 Package: mjcstats
-Version: 1.0.2
-Date: 2012-10-21
+Version: 1.0.3
+Date: 2012-10-29
 Title: MJC's general statistics library
 Author: Mark Cowley <m.cowley@garvan.org.au>
 Maintainer: Mark Cowley <m.cowley@garvan.org.au>
@@ -30,6 +30,8 @@ Collate:
     'normrnd.R'
     'standardise.R'
     'is.infinite.data.frame.R'
+    'p.value-methods.R'
 Imports:
     mjcbase,
     stats
+Enhances: survival, stats
