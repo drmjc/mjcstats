@@ -6,8 +6,9 @@
   p.value(x, ...)
 }
 \arguments{
-  \item{x}{an object from coxph, surdiff, any result from
-  the standard \sQuote{*.test} interface. see examples}
+  \item{x}{an object from coxph, surdiff, any result of
+  class htest, which you get from most of the built in
+  \sQuote{*.test} functions. see examples.}
 
   \item{\dots}{currently unused.}
 }

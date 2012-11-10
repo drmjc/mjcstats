@@ -2,7 +2,8 @@
 #' 
 #' Extract the p.value from a model fit.
 #' 
-#' @param x an object from coxph, surdiff, any result from the standard \sQuote{*.test} interface. see examples
+#' @param x an object from coxph, surdiff, any result of class htest, which you get from most of the 
+#'  built in \sQuote{*.test} functions. see examples.
 #' @return a numeric(1) containing the p-value. If \code{x} is a \code{survdiff} object, then the result is the 
 #'  chi-squared p.value (see survival:::summary.survfit). If \code{x} is a \code{code} object, then the result is the 
 #'  likelihood ratio p.value (see survival:::summary.coxph).
@@ -14,6 +15,7 @@
 #' 
 #' @export
 #' @S3method p.value default
+#' @S3method p.value htest
 #' @S3method p.value survdiff
 #' @S3method p.value coxph
 #' @rdname p.value-methods
@@ -50,6 +52,10 @@ p.value <- function(x, ...) UseMethod("p.value")
 
 p.value.default <- function(x) {
 	"p.value" %in% names(x) || stop("Can't extract p.value from object of type: ", class(x))
+	x$p.value
+}
+
+p.value.htest <- function(x) {
 	x$p.value
 }
 
