@@ -1,6 +1,7 @@
 S3method(is.infinite,data.frame)
 S3method(p.value,coxph)
 S3method(p.value,default)
+S3method(p.value,htest)
 S3method(p.value,survdiff)
 export(coef_pvalue.coxph)
 export(corceff)
