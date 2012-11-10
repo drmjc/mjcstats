@@ -3,7 +3,6 @@
 #' @param x a \code{data.frame}
 #' @return a \code{data.frame} of logicals.
 #' @author Mark Cowley, 2012-10-19
-#' @export
 #' @method is.infinite data.frame
 #' @S3method is.infinite data.frame
 #' @examples
