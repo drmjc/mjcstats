@@ -13,7 +13,6 @@
 #' @rdname p.value-methods
 #' @docType methods
 #' 
-#' @export
 #' @S3method p.value default
 #' @S3method p.value htest
 #' @S3method p.value survdiff
